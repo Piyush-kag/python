@@ -1,21 +1,34 @@
-from fastapi import Depends, FastAPI
-from controller import post_controller, user_controller
+from fastapi import FastAPI
+from controller import post_controller, user_controller, student_controller, course_controller
 from database import createDb
-import logging
 from exception.exception import CustomException, custom_exception_handler, generic_exception_handler
-
-# Configure logging
-logging.basicConfig(level=logging.INFO,
-                    format='%(asctime)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
+from inheritance.oops import Cappuccino, Coffee, Espresso, Latte
 
 createDb()
-
 
 app = FastAPI()
 
 app.add_exception_handler(CustomException, custom_exception_handler)
 app.add_exception_handler(Exception, generic_exception_handler)
 
-app.include_router(post_controller.router)
 app.include_router(user_controller.router)
+app.include_router(post_controller.router)
+app.include_router(student_controller.router)
+app.include_router(course_controller.router)
+
+# x = Coffee("Normal Coffee", 3.00)
+# x.make_coffee()
+# x.serve_coffee()
+
+# x = Cappuccino(3.50)
+# x.make_coffee()
+# x.serve_coffee()
+
+# x = Latte(4.00)
+# x.add_milk()
+# x.make_coffee()
+# x.serve_coffee()
+#
+# x = Espresso(5.00)
+# x.make_coffee()
+# x.serve_coffee()
