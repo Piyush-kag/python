@@ -1,4 +1,4 @@
-import logging
+from loguru import logger
 from typing import List
 
 from fastapi import APIRouter, Depends, HTTPException, status
@@ -11,7 +11,7 @@ from schemas import UserBase, UserCreate
 router = APIRouter()
 
 
-@router.post("/users",response_model=UserBase, status_code=status.HTTP_201_CREATED, tags=["One-to-Many/Users"])
+@router.post("/users", response_model=UserBase, status_code=status.HTTP_201_CREATED, tags=["One-to-Many/Users"])
 async def create_user(user: UserCreate, db: Session = Depends(get_db)):
     try:
         return user_service.create_user(db, user)
@@ -27,10 +27,10 @@ async def fetch_users_from_third_party_api(db: Session = Depends(get_db)):
         message = user_service.fetch_and_store_users(db)
         return {"message": message}
     except HTTPException as e:
-        logging.error(f"HTTPException: {e.detail}")
+        logger.error(f"HTTPException: {e.detail}")
         raise e
     except Exception as e:
-        logging.error(f"An unexpected error occurred: {e}")
+        logger.error(f"An unexpected error occurred: {e}")
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
 
@@ -47,9 +47,9 @@ async def read_user_by_id(user_id: int, db: Session = Depends(get_db)):
         raise CustomException(status_code=500, detail="Internal Server Error")
 
 
-@router.get("/users/",response_model=List[UserBase], status_code=status.HTTP_200_OK, tags=["One-to-Many/Users"])
+@router.get("/users/", response_model=List[UserBase], status_code=status.HTTP_200_OK, tags=["One-to-Many/Users"])
 async def read_all_users(db: Session = Depends(get_db)):
-    logging.info("Getting all users")
+    logger.info("Getting all users")
     try:
         db_users = user_service.get_users(db)
         if not db_users:
@@ -85,3 +85,11 @@ async def get_username_by_fuzzy_search(user_word: str, db: Session = Depends(get
         raise CustomException(status_code=e.status_code, detail=e.detail)
     except Exception as e:
         raise CustomException(status_code=500, detail="Internal Server Error")
+
+
+@router.get("/paginated-users/",status_code=status.HTTP_200_OK, tags=["One-to-Many/Users"])
+def read_users(limit: int = 5, db: Session = Depends(get_db)):
+    users = user_service.get_users_with_limit(db, limit)
+    if not users:
+        raise CustomException(status_code=404, detail="No users found")
+    return users

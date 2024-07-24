@@ -22,6 +22,16 @@ class UserBase(BaseModel):
         from_attributes = True
 
 
+class UserName(BaseModel):
+    id: int
+    username: str
+    email: str
+    posts: List[PostBase] = []
+
+    class Config:
+        from_attributes = True
+
+
 class UserCreate(BaseModel):
     username: str
     email: str

@@ -1,7 +1,9 @@
-import logging
+from loguru import logger
 from sqlite3 import IntegrityError
 import requests
 from sqlalchemy.orm import Session
+from schemas import UserBase
+from exception.exception import CustomException
 from models import User
 from repository import user_repo
 from fastapi import HTTPException
@@ -47,7 +49,23 @@ def fetch_and_store_users(db: Session):
         try:
             create_user(db, user)
         except IntegrityError:
-            logging.warning(f"User with id {user.id} already exists in the database. Skipping insertion.")
+            logger.warning(f"User with id {user.id} already exists in the database. Skipping insertion.")
             db.rollback()
 
     return "Users have been successfully fetched and stored."
+
+
+def get_users_with_limit(db: Session, limit: int):
+    try:
+        logger.info(f"Finding Users...")
+        users = db.query(User).limit(limit).all()
+        user_str = "\n".join([f"ID: {user.id}, Username: {user.username}, Email: {user.email}" for user in users])
+        logger.success(f"Found users:\n{user_str}")
+        if users is None:
+            logger.error(f"No Users Found")
+            raise HTTPException(status_code=404, detail='Unable to fetch users.')
+        return users
+    except HTTPException as e:
+        raise CustomException(status_code=e.status_code, detail=e.detail)
+    except Exception as e:
+        raise CustomException(status_code=500, detail="Internal Server Error")
