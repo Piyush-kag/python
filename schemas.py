@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 from pydantic import BaseModel
 
 
@@ -75,6 +75,39 @@ class StudentBase(BaseModel):
 
 class CourseCreate(BaseModel):
     course_name: str
+
+    class Config:
+        from_attributes = True
+
+
+class EmployeeDetailsBase(BaseModel):
+    address: Optional[str] = None
+    phone_number: Optional[str] = None
+
+
+class EmployeeDetailsCreate(EmployeeDetailsBase):
+    employee_id: int
+
+
+class EmployeeDetails(EmployeeDetailsBase):
+    id: int
+    employee_id: int
+
+    class Config:
+        from_attributes = True
+
+
+class EmployeeBase(BaseModel):
+    name: str
+
+
+class EmployeeCreate(EmployeeBase):
+    pass
+
+
+class Employee(EmployeeBase):
+    id: int
+    details: Optional[EmployeeDetails] = None
 
     class Config:
         from_attributes = True

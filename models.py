@@ -6,6 +6,7 @@ from sqlalchemy.orm import relationship, Mapped, mapped_column
 Base = declarative_base()
 
 
+# One to many
 class User(Base):
     __tablename__ = 'users'
 
@@ -25,6 +26,8 @@ class Post(Base):
     user_id: Mapped[int] = mapped_column(Integer, ForeignKey('users.id'))
     # user: Mapped["User"] = relationship("User", back_populates="posts")
 
+
+# Many To Many
 
 # Association table
 student_course_association = Table(
@@ -59,3 +62,40 @@ class Course(Base):
         secondary=student_course_association,
         back_populates="courses"
     )
+
+
+# One To one
+
+class Employee(Base):
+    __tablename__ = 'employees'
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String(50), nullable=False)
+    details = relationship("EmployeeDetails", uselist=False, back_populates="employee")
+
+
+class EmployeeDetails(Base):
+    __tablename__ = 'employee_details'
+
+    id = Column(Integer, primary_key=True, index=True)
+    employee_id = Column(Integer, ForeignKey('employees.id'), unique=True, nullable=False)
+    address = Column(String(100))
+    phone_number = Column(String(15))
+    employee = relationship("Employee", back_populates="details")
+
+
+# Many to One
+
+class Customer(Base):
+    __tablename__ = 'customers'
+    id = mapped_column(Integer, primary_key=True)
+    name = mapped_column(String(50))
+    orders = relationship("Order", back_populates="customer")
+
+
+class Order(Base):
+    __tablename__ = 'orders'
+    id = mapped_column(Integer, primary_key=True)
+    order_number = mapped_column(String(50))
+    customer_id = mapped_column(Integer, ForeignKey('customers.id'))
+    customer = relationship("Customer", back_populates="orders")

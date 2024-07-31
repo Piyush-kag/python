@@ -1,3 +1,4 @@
+from sqlalchemy import func
 from sqlalchemy.orm import Session
 from models import User
 from sqlalchemy.orm import joinedload
@@ -22,8 +23,12 @@ def get_users(db: Session):
 
 def delete_user(db: Session, user_id: int):
     user = db.query(User).filter(User.id == user_id).first()
-    if user:
-        db.delete(user)
-        db.commit()
-        return user
-    return None
+    if user is None:
+        return None
+    db.delete(user)
+    db.commit()
+    return user
+
+
+def get_user_by_word(db, user_word):
+    return db.query(User.username).filter(func.lower(User.username).like(f'%{user_word.lower()}%')).all()

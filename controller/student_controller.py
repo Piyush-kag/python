@@ -13,7 +13,8 @@ from loguru import logger
 router = APIRouter()
 
 
-@router.post("/student", response_model=StudentBase, status_code=status.HTTP_201_CREATED, tags=["Many-to-Many/Students"])
+@router.post("/student", response_model=StudentBase, status_code=status.HTTP_201_CREATED,
+             tags=["Many-to-Many/Students"])
 async def add_student(student: StudentCreate, db: Session = Depends(get_db)):
     try:
         logger.info(f"Adding {student.student_name}")
@@ -34,7 +35,8 @@ async def enroll_student(student_id: int, course_id: int, db: Session = Depends(
         raise HTTPException(status_code=e.status_code, detail=e.detail)
 
 
-@router.get("/students",response_model=List[StudentBase], status_code=status.HTTP_200_OK, tags=["Many-to-Many/Students"])
+@router.get("/students", response_model=List[StudentBase], status_code=status.HTTP_200_OK,
+            tags=["Many-to-Many/Students"])
 async def get_all_students(db: Session = Depends(get_db)):
     logging.info("Getting all students")
     try:
