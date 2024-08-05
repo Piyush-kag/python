@@ -1,13 +1,19 @@
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from dotenv import load_dotenv
 from models import Base
 from loguru import logger
 
-URL_DATABASE = "mysql+pymysql://root:root@localhost:3306/BlogApplication"
+load_dotenv(dotenv_path='.env.dev')
 
-engine = create_engine(
-    URL_DATABASE
-)
+URL_DATABASE = os.getenv("URL_DATABASE")
+
+if not URL_DATABASE:
+    logger.error("Database URL not found in environment variables.")
+    raise ValueError("Database URL not set in environment variables")
+
+engine = create_engine(URL_DATABASE)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 
