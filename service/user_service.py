@@ -5,9 +5,10 @@ from sqlalchemy.orm import Session
 from exception.exception import CustomException
 from models import User
 from repository import user_repo
+from schemas import UserCreate
 
 
-def create_user(db: Session, user: User):
+def create_user(db: Session, user: UserCreate):
     try:
         return user_repo.create_user(db, user)
     except IntegrityError as e:

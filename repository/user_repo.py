@@ -1,3 +1,4 @@
+from loguru import logger
 from sqlalchemy import func
 from sqlalchemy.orm import Session
 from models import User
@@ -5,7 +6,7 @@ from sqlalchemy.orm import joinedload
 from schemas import UserCreate
 
 
-def create_user(db: Session, user: UserCreate) -> User:
+def create_user(db: Session, user: UserCreate) -> UserCreate:
     db_user = User(username=user.username, email=user.email)
     db.add(db_user)
     db.commit()

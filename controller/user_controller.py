@@ -14,7 +14,7 @@ router = APIRouter()
 @router.post("/users", response_model=UserBase, status_code=status.HTTP_201_CREATED, tags=["One-to-Many/Users"])
 async def create_user(user: UserCreate, db: Session = Depends(get_db)):
     try:
-        return user_service.create_user(db, user.model_computed_fields)
+        return user_service.create_user(db, user)
     except CustomException as e:
         raise e
     except Exception as e:
