@@ -1,10 +1,10 @@
 from fastapi import FastAPI
 from controller import (post_controller, user_controller, student_controller, course_controller, employee_controller)
-from database import createDb
+from database import create_db
 from exception.exception import CustomException, custom_exception_handler, generic_exception_handler
 from inheritance.oops import Cappuccino, Coffee, Espresso, Latte
 
-createDb()
+create_db()
 
 app = FastAPI()
 
