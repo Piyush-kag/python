@@ -1,3 +1,4 @@
+from logging_config import logging_config
 from loguru import logger
 from typing import List
 

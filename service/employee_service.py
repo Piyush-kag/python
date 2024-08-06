@@ -1,5 +1,5 @@
-from typing import Type
-
+from logging_config import logging_config
+from loguru import logger
 from sqlalchemy.orm import Session
 from repository import employee_repository
 from models import Employee, EmployeeDetails
@@ -10,6 +10,7 @@ def get_employee_service(db: Session, employee_id: int) -> Employee:
         employee = employee_repository.get_employee_by_id(db, employee_id)
         if not employee:
             raise ValueError(f"Employee with id {employee_id} not found")
+        logger.success(f"Fetched Employee with id : {employee_id} , Data :{employee}")
         return employee
     except Exception as e:
         raise ValueError(f"Employee not found with id : {employee_id}")
@@ -19,6 +20,7 @@ def create_employee_service(db: Session, name: str, address: str, phone_number: 
     try:
         employee = employee_repository.create_employee(db, name)
         employee_details = employee_repository.create_employee_details(db, employee.id, address, phone_number)
+        logger.success("Employee Created in db Successfully.")
         return employee, employee_details
     except Exception as e:
         raise ValueError("An error occurred while creating the employee")
@@ -41,6 +43,7 @@ def update_employee_service(db: Session, employee_id: int, name: str = None, add
                 update_data['phone_number'] = phone_number
             employee_repository.update_employee_details(db, employee_id, update_data)
 
+        logger.success("Updated Employee.")
         return employee_repository.get_employee_by_id(db, employee_id)
     except Exception as e:
         raise ValueError("An error occurred while updating the employee")

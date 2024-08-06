@@ -27,4 +27,4 @@ def get_db():
 
 def createDb():
     Base.metadata.create_all(bind=engine)
-    logger.success("Creating tables")
+    logger.success("Updated DB.")

@@ -1,5 +1,6 @@
 from fastapi import APIRouter
-import logging
+from logging_config import logging_config
+from loguru import logger
 from typing import List
 
 from fastapi import APIRouter, Depends, HTTPException, status
@@ -8,7 +9,6 @@ from database import get_db
 from exception.exception import CustomException
 from service import student_service
 from schemas import StudentBase, StudentCreate
-from loguru import logger
 
 router = APIRouter()
 

@@ -4,9 +4,10 @@ from sqlalchemy.orm import Session
 from models import Student
 from repository import student_repo
 from repository.student_repo import add_student_to_course
+from schemas import StudentCreate
 
 
-def add_student(db: Session, student: Student):
+def add_student(db: Session, student: StudentCreate):
     return student_repo.add_student(db, student)
 
 
