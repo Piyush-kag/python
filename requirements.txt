@@ -78,3 +78,6 @@ urllib3==2.2.2
 uvicorn==0.30.1
 virtualenv==20.26.3
 zipp==3.19.2
+
+jose~=1.0.0
+utils~=1.0.2

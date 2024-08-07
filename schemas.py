@@ -16,6 +16,7 @@ class UserBase(BaseModel):
     id: int
     username: str
     email: str
+    password: str
     posts: List[PostBase] = []
 
     class Config:
@@ -26,6 +27,7 @@ class UserName(BaseModel):
     id: int
     username: str
     email: str
+    password: str
     posts: List[PostBase] = []
 
     class Config:
@@ -35,6 +37,30 @@ class UserName(BaseModel):
 class UserCreate(BaseModel):
     username: str
     email: str
+    password: str
+
+    class Config:
+        from_attributes = True
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+    class Config:
+        from_attributes = True
+
+
+class TokenData(BaseModel):
+    username: str or None = None
+    id: int or None = None
+
+    class Config:
+        from_attributes = True
+
+
+class UserInDB(BaseModel):
+    hashed_password: str
 
     class Config:
         from_attributes = True

@@ -19,3 +19,90 @@
 2024-08-06 at 12:07:56 | SUCCESS | Database created/updated successfully.
 2024-08-06 at 12:18:24 | SUCCESS | Database created/updated successfully.
 2024-08-06 at 12:19:09 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 12:21:44 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 16:56:50 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 17:39:34 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 17:39:41 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 17:44:51 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 17:48:02 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 17:48:18 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 17:48:49 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 17:49:14 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 17:58:07 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 18:00:23 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 18:09:24 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 18:56:25 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 18:59:49 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 19:21:10 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 19:36:45 | ERROR | Unexpected error: 'NoneType' object has no attribute 'query'
+2024-08-06 at 19:36:54 | ERROR | Unexpected error: 'NoneType' object has no attribute 'query'
+2024-08-06 at 19:37:18 | ERROR | Unexpected error: 'NoneType' object has no attribute 'query'
+2024-08-06 at 19:37:27 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 19:39:30 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 19:39:31 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 19:39:58 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 19:40:26 | ERROR | Unexpected error: 'NoneType' object has no attribute 'query'
+2024-08-06 at 19:40:28 | ERROR | Unexpected error: 'NoneType' object has no attribute 'query'
+2024-08-06 at 19:41:29 | ERROR | Unexpected error: 'NoneType' object has no attribute 'query'
+2024-08-06 at 19:41:45 | ERROR | Unexpected error: 'NoneType' object has no attribute 'query'
+2024-08-06 at 19:43:28 | ERROR | Unexpected error: type object 'User' has no attribute '_query_cls'
+2024-08-06 at 19:44:32 | ERROR | Unexpected error: type object 'User' has no attribute '_query_cls'
+2024-08-06 at 19:45:06 | ERROR | Unexpected error: type object 'User' has no attribute '_query_cls'
+2024-08-06 at 19:45:52 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 19:46:39 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 19:46:49 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 19:47:00 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 19:47:16 | ERROR | Unexpected error: (pymysql.err.DataError) (1406, "Data too long for column 'password' at row 1")
+[SQL: INSERT INTO users (username, email, password) VALUES (%(username)s, %(email)s, %(password)s)]
+[parameters: {'username': 'pk', 'email': 'pk@gmail.com', 'password': '$2b$12$2ZyHuHAJmay1cG/qdL6v1usjnr4iN2fbhfh8nr3iSZrrtpyVY6dpi'}]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+2024-08-06 at 19:47:37 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 19:47:53 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 19:48:53 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 19:49:06 | ERROR | Unexpected error: type object 'User' has no attribute '_query_cls'
+2024-08-06 at 19:49:19 | ERROR | Unexpected error: 'NoneType' object has no attribute 'query'
+2024-08-06 at 19:49:41 | ERROR | Unexpected error: 'generator' object has no attribute 'query'
+2024-08-06 at 19:49:51 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 19:50:50 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 19:51:26 | SUCCESS | Database created/updated successfully.
+2024-08-06 at 19:51:53 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 10:42:40 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 10:43:11 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 10:43:25 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 10:44:21 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 10:48:10 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 10:48:21 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 10:50:20 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 10:51:25 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 10:51:34 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 10:51:44 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 10:51:48 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 10:52:20 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 10:52:24 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 10:52:32 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 10:52:38 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 10:52:43 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 10:53:11 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 10:53:23 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 11:19:06 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 11:19:08 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 11:19:14 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 11:19:21 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 11:19:24 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 11:38:11 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 11:38:17 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 11:40:41 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 11:40:59 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 11:41:32 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 11:41:44 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 11:41:58 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 11:42:12 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 11:43:02 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 11:47:02 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 11:47:23 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 11:48:16 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 11:50:33 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 11:52:03 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 13:23:05 | SUCCESS | Database created/updated successfully.
+2024-08-07 at 13:24:08 | SUCCESS | User Login Successfully.
+2024-08-07 at 13:24:08 | SUCCESS | Access_Token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaXl1c2giLCJleHAiOjE3MjMwMTgxNDh9.Hf-I91At_zbUA1N2PewnHlfEPYhaXg1DGN120yxEPl4

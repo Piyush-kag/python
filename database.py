@@ -41,6 +41,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from loguru import logger
+from logging_config import logging_config
 from models import Base
 from config import settings
 
@@ -51,8 +52,11 @@ if not database_url:
     logger.error(f"Database URL not found for the active profile: {active_profile}")
     raise ValueError(f"Database URL not set for the active profile: {active_profile}")
 
-# Create engine and session
-engine = create_engine(database_url)
+if database_url.startswith("sqlite"):
+    engine = create_engine(database_url, connect_args={"check_same_thread": False})
+else:
+    engine = create_engine(database_url)
+
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 
